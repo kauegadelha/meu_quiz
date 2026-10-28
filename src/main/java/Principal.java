@@ -19,7 +19,7 @@ public class Principal {
 
             switch (option){
                 case 1: if (quiz != null) {
-                            System.out.println("O Quiz já está criado!");
+                            System.out.println("O main.java.Quiz já está criado!");
                         } else {
                             List<Question> questionList = new ArrayList<>();
 
@@ -45,7 +45,7 @@ public class Principal {
                         }
                         break;
                 case 2: if (quiz == null) {
-                           System.out.println("O Quiz não está criado!");
+                           System.out.println("O main.java.Quiz não está criado!");
                         } else {
                             quiz.iniciar();
                         }
@@ -60,8 +60,8 @@ public class Principal {
 
     public static void menu(){
         System.out.println("=========MENU==========");
-        System.out.println("|| [1] Criar Quiz.   ||");
-        System.out.println("|| [2] Iniciar Quiz. ||");
+        System.out.println("|| [1] Criar main.java.Quiz.   ||");
+        System.out.println("|| [2] Iniciar main.java.Quiz. ||");
         System.out.println("|| [3] Sair.         ||");
         System.out.println("=======================\nSelecione uma opção: ");
 
