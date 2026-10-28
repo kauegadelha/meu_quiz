@@ -1,7 +1,7 @@
 public class Question {
-    int id;
-    String text;
-    boolean response;
+    private int id;
+    private String text;
+    private boolean response;
 
     public Question(int id, String text, boolean response){
         this.id = id;
@@ -17,7 +17,7 @@ public class Question {
         return text;
     }
 
-    public boolean getResponse() {
+    public boolean isResponse() {
         return response;
     }
 }

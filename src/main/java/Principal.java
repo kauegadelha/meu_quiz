@@ -5,49 +5,49 @@ import java.util.ArrayList;
 public class Principal {
 
     public static void main(String[] args) {
-        int option, qtd_questions = 3;
-        String text, name = "meu_quiz";
+        int option, questionCount = 3;
+        String questionText, quizName = "meu_quiz";
         char response;
         Quiz quiz = null;
 
-        Scanner entrada = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         do {
-            menu();
-            option = entrada.nextInt();
-            entrada.nextLine();
+            displayMenu();
+            option = scanner.nextInt();
+            scanner.nextLine();
 
             switch (option){
                 case 1: if (quiz != null) {
-                            System.out.println("O main.java.Quiz já está criado!");
+                            System.out.println("O Quiz já está criado!");
                         } else {
                             List<Question> questionList = new ArrayList<>();
 
-                            for (int i = 1; i <= qtd_questions; i++) {
+                            for (int i = 1; i <= questionCount; i++) {
                                 System.out.println("Crie uma questão: ");
-                                text = entrada.nextLine();
+                                questionText = scanner.nextLine();
 
                                 String r;
                                 do {
                                     System.out.println("Verdadeiro ou Falso? Digite 'V' ou 'F': ");
-                                    r = entrada.nextLine().trim().toUpperCase();
+                                    r = scanner.nextLine().trim().toUpperCase();
                                 } while (!r.equals("V") && !r.equals("F"));
 
                                 response = r.charAt(0);
 
                                 Question q;
-                                if (response == 'V') q = new Question(i, text, true);
-                                else q = new Question(i, text, false);
+                                if (response == 'V') q = new Question(i, questionText, true);
+                                else q = new Question(i, questionText, false);
 
                                 questionList.add(q);
                             }
-                            quiz = new Quiz(name, questionList);
+                            quiz = new Quiz(quizName, questionList);
                         }
                         break;
                 case 2: if (quiz == null) {
-                           System.out.println("O main.java.Quiz não está criado!");
+                           System.out.println("O Quiz não está criado!");
                         } else {
-                            quiz.iniciar();
+                            quiz.start(scanner);
                         }
                         break;
                 case 3: System.out.println("\nSaindo...");
@@ -58,10 +58,10 @@ public class Principal {
         } while(option != 3);
     }
 
-    public static void menu(){
+    public static void displayMenu(){
         System.out.println("=========MENU==========");
-        System.out.println("|| [1] Criar main.java.Quiz.   ||");
-        System.out.println("|| [2] Iniciar main.java.Quiz. ||");
+        System.out.println("|| [1] Criar Quiz.   ||");
+        System.out.println("|| [2] Iniciar Quiz. ||");
         System.out.println("|| [3] Sair.         ||");
         System.out.println("=======================\nSelecione uma opção: ");
 

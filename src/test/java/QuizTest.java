@@ -16,11 +16,9 @@ public class QuizTest {
 
         Quiz quiz = new Quiz("Teste", perguntas);
 
-        quiz.points = 2;
 
-        int resultado = quiz.calcularResultado();
+        int resultado = quiz.calculateResult(2);
 
         assertEquals(66, resultado);
-        assertEquals(0, quiz.points);
     }
 }
