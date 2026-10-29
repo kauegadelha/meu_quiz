@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Principal {
 
     public static void main(String[] args) {
-        int option, questionCount = 3;
+        int option, questionCount = 4;
         String questionText, quizName = "meu_quiz";
         char response;
         Quiz quiz = null;
