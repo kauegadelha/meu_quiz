@@ -1,3 +1,5 @@
+package br.com.meuquiz;
+
 public class Question {
     private int id;
     private String text;

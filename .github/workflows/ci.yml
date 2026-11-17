@@ -1,5 +1,5 @@
 
-name: CI - Meu Quiz
+name: CI - Meu br.com.meuquiz.Quiz
 
 on:
   push:
