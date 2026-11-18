@@ -75,4 +75,5 @@ jobs:
           -Dsonar.organization=${{ steps.auth.outputs.organization }}
           -Dsonar.projectKey=${{ steps.auth.outputs.project-key }}
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+          -Dsonar.qualitygate.wait=true
 
