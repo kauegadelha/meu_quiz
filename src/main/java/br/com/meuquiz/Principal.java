@@ -1,3 +1,5 @@
+package br.com.meuquiz;
+
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class Principal {
 
             switch (option){
                 case 1: if (quiz != null) {
-                            System.out.println("O Quiz já está criado!");
+                            System.out.println("O br.com.meuquiz.Quiz já está criado!");
                         } else {
                             List<Question> questionList = new ArrayList<>();
 
@@ -45,7 +47,7 @@ public class Principal {
                         }
                         break;
                 case 2: if (quiz == null) {
-                           System.out.println("O Quiz não está criado!");
+                           System.out.println("O br.com.meuquiz.Quiz não está criado!");
                         } else {
                             quiz.start(scanner);
                         }
@@ -60,8 +62,8 @@ public class Principal {
 
     public static void displayMenu(){
         System.out.println("=========MENU==========");
-        System.out.println("|| [1] Criar Quiz.   ||");
-        System.out.println("|| [2] Iniciar Quiz. ||");
+        System.out.println("|| [1] Criar br.com.meuquiz.Quiz.   ||");
+        System.out.println("|| [2] Iniciar br.com.meuquiz.Quiz. ||");
         System.out.println("|| [3] Sair.         ||");
         System.out.println("=======================\nSelecione uma opção: ");
 

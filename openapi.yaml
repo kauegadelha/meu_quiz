@@ -1,0 +1,83 @@
+
+openapi: 3.0.3
+
+info:
+  title: API Meu Quiz
+  description: API para gerenciamento e execução de quizzes
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /api/quiz/status:
+    get:
+      summary: Verificar status da API
+      responses:
+        '200':
+          description: API funcionando
+
+  /api/quiz:
+    post:
+      summary: Criar um quiz
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - questions
+              properties:
+                name:
+                  type: string
+                  example: Meu Quiz
+                questions:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - text
+                      - response
+                    properties:
+                      text:
+                        type: string
+                        example: Java é uma linguagem orientada a objetos?
+                      response:
+                        type: boolean
+                        example: true
+      responses:
+        '201':
+          description: Quiz criado com sucesso
+
+  /api/quiz/questions:
+    get:
+      summary: Consultar perguntas
+      responses:
+        '200':
+          description: Lista de perguntas
+
+  /api/quiz/answer:
+    post:
+      summary: Enviar respostas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - answers
+              properties:
+                answers:
+                  type: array
+                  items:
+                    type: boolean
+                  example:
+                    - true
+                    - false
+                    - true
+      responses:
+        '200':
+          description: Resultado das respostas

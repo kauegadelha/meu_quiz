@@ -1,3 +1,4 @@
+package br.com.meuquiz;
 
 import org.junit.jupiter.api.Test;
 
