@@ -14,10 +14,6 @@ jobs:
   teste:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      id-token: write
-
     steps:
       - name: Baixar o código
         uses: actions/checkout@v4
@@ -32,7 +28,41 @@ jobs:
           cache: maven
 
       - name: Executar testes
-        run: mvn test
+        run: mvn clean verify
+
+      - name: Salvar relatório JaCoCo
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-jacoco
+          path: target/site/jacoco/jacoco.xml
+          if-no-files-found: error
+
+  sast:
+    needs: teste
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Baixar relatório JaCoCo
+        uses: actions/download-artifact@v4
+        with:
+          name: relatorio-jacoco
+          path: target/site/jacoco
+
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
 
       - name: Autenticar no SonarQube Cloud
         uses: SonarSource/sonarqube-auth-action@b372e2c2930aadfcc4f4399446da1e12772709ad # v1.2
@@ -44,4 +74,5 @@ jobs:
           org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
           -Dsonar.organization=${{ steps.auth.outputs.organization }}
           -Dsonar.projectKey=${{ steps.auth.outputs.project-key }}
+          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
 
