@@ -77,7 +77,7 @@ jobs:
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
           -Dsonar.qualitygate.wait=true
   dast:
-    needs: teste
+    needs: sast
     runs-on: ubuntu-latest
 
     steps:
